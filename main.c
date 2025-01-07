@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
+
+#include "6502/controller.h"
 
 int main () {
     intro_screen();
@@ -42,20 +45,4 @@ void wrong_input () {
     printf("Incorrect input! Please try again..\n");
     printf("\n");
     main_menu();
-}
-
-// will likely be moved to its own header file when we've done a bit more then just assign memory addresses..
-void processor_6502 () {
-    printf("[ ! ] Assigning memory for ATMEL 6502..\n");
-
-    // assign all memory addresses:
-    char memory_addresses[65536][7]; // "0xFFFF" + null terminator, hence 7 not 6
-    // increment from lowest memory address value to maximum
-    for (int i = 0; i < 65536; i++) {
-        snprintf(memory_addresses[i], 7, "0x%04X", i);
-        printf("%s\n", memory_addresses[i]);
-    }
-
-    printf("[ ! ] Done assigning memory for all addresses.\n");
-    getchar();
 }
